@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
-public class UserServiceImpl implements UserService {
+ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -37,4 +37,20 @@ public class UserServiceImpl implements UserService {
         }
             return local;
     }
+
+    //getting user by username
+    @Override
+    public User getUser(String username){
+        return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public void  deleteUser(Long userId) {
+         this.userRepository.deleteById(userId);
+    }
+
+//    @Override
+//    public java.lang.Void deleteUsername(String username) {
+//      return  this.userRepository.deleteByUsername(username);
+//    }
 }
